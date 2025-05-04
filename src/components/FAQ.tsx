@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { faqs } from '../data/homeData';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getCurrentUser } from '../utils/auth';
 
 const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const navigate = useNavigate();
+  const currentUser = getCurrentUser();
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const handleSignUp = () => {
+    if (currentUser) {
+      navigate('/app/dashboard');
+    } else {
+      navigate('/signup');
+    }
   };
 
   return (
@@ -61,8 +73,11 @@ const FAQ: React.FC = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700">
-            Sign Up for Free
+          <button 
+            onClick={handleSignUp}
+            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700"
+          >
+            {currentUser ? 'Go to Dashboard' : 'Sign Up for Free'}
           </button>
         </div>
       </div>

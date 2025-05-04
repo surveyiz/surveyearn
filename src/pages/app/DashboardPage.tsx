@@ -8,7 +8,8 @@ import {
   AlertCircle,
   ChevronRight,
   BarChart3,
-  Settings
+  Settings,
+  ClipboardList
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getCurrentUser } from '../../utils/auth';
@@ -53,6 +54,16 @@ const DashboardPage: React.FC = () => {
           <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
           <p className="text-gray-600">Welcome back, {user?.name || 'User'}</p>
         </div>
+        
+        {/* Take Surveys CTA Button */}
+        <button
+          onClick={() => navigate('/app/surveys')}
+          className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-primary-600 to-accent-500 text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2"
+        >
+          <ClipboardList className="w-5 h-5" />
+          Take Surveys & Earn Money
+          <ChevronRight className="w-5 h-5" />
+        </button>
       </div>
 
       {/* Payment Method Alert */}

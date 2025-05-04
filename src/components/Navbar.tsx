@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ClipboardList } from 'lucide-react';
 import Button from './Button';
+import { getCurrentUser } from '../utils/auth';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const currentUser = getCurrentUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,6 +41,10 @@ const Navbar: React.FC = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleDashboardClick = () => {
+    navigate('/app/dashboard');
   };
 
   const navLinks = [
@@ -73,16 +80,29 @@ const Navbar: React.FC = () => {
                   {link.name}
                 </button>
               ))}
-              <Link to="/login">
-                <Button variant="outline" size="sm" className="text-white border-white hover:bg-white/10">
-                  Login
+              {currentUser ? (
+                <Button 
+                  variant="primary" 
+                  size="sm" 
+                  onClick={handleDashboardClick}
+                  className="bg-primary-600 hover:bg-primary-700"
+                >
+                  Dashboard
                 </Button>
-              </Link>
-              <Link to="/signup">
-                <Button variant="primary" size="sm">
-                  Sign Up
-                </Button>
-              </Link>
+              ) : (
+                <>
+                  <Link to="/login">
+                    <Button variant="outline" size="sm" className="text-white border-white hover:bg-white/10">
+                      Login
+                    </Button>
+                  </Link>
+                  <Link to="/signup">
+                    <Button variant="primary" size="sm">
+                      Sign Up
+                    </Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
           
@@ -113,16 +133,29 @@ const Navbar: React.FC = () => {
               </button>
             ))}
             <div className="flex space-x-2 mt-4 px-3 pb-4">
-              <Link to="/login" className="flex-1">
-                <Button variant="outline" size="sm" className="w-full text-white border-white hover:bg-white/10">
-                  Login
+              {currentUser ? (
+                <Button 
+                  variant="primary" 
+                  size="sm" 
+                  onClick={handleDashboardClick}
+                  className="w-full bg-primary-600 hover:bg-primary-700"
+                >
+                  Dashboard
                 </Button>
-              </Link>
-              <Link to="/signup" className="flex-1">
-                <Button variant="primary" size="sm" className="w-full">
-                  Sign Up
-                </Button>
-              </Link>
+              ) : (
+                <>
+                  <Link to="/login" className="flex-1">
+                    <Button variant="outline" size="sm" className="w-full text-white border-white hover:bg-white/10">
+                      Login
+                    </Button>
+                  </Link>
+                  <Link to="/signup" className="flex-1">
+                    <Button variant="primary" size="sm" className="w-full">
+                      Sign Up
+                    </Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

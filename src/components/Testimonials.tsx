@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote, User } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { testimonials } from '../data/homeData';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getCurrentUser } from '../utils/auth';
 
 const Testimonials: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const navigate = useNavigate();
+  const currentUser = getCurrentUser();
 
   const nextTestimonial = () => {
     setDirection(1);
@@ -17,6 +21,14 @@ const Testimonials: React.FC = () => {
     setActiveIndex((prevIndex) => 
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
+  };
+
+  const handleJoinCommunity = () => {
+    if (currentUser) {
+      navigate('/app/dashboard');
+    } else {
+      navigate('/signup');
+    }
   };
 
   const renderStars = (rating: number) => {
@@ -48,7 +60,6 @@ const Testimonials: React.FC = () => {
 
   return (
     <section className="py-20 relative overflow-hidden" id="testimonials">
-      {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2" />
@@ -63,7 +74,6 @@ const Testimonials: React.FC = () => {
         </div>
 
         <div className="relative">
-          {/* Main Testimonial Card */}
           <div className="max-w-4xl mx-auto">
             <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-primary-500/20 to-accent-500/20 rounded-br-full" />
@@ -113,7 +123,6 @@ const Testimonials: React.FC = () => {
               </div>
             </div>
 
-            {/* Navigation Buttons */}
             <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between items-center px-4">
               <button
                 onClick={prevTestimonial}
@@ -130,7 +139,6 @@ const Testimonials: React.FC = () => {
             </div>
           </div>
 
-          {/* Testimonial Progress */}
           <div className="flex justify-center mt-8 gap-2">
             {testimonials.map((_, index) => (
               <button
@@ -149,10 +157,12 @@ const Testimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Call to Action */}
         <div className="text-center mt-12">
-          <button className="inline-flex items-center px-8 py-4 text-lg font-medium rounded-xl text-white bg-gradient-to-r from-primary-600 to-accent-500 hover:from-primary-700 hover:to-accent-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-            Join Our Community
+          <button 
+            onClick={handleJoinCommunity}
+            className="inline-flex items-center px-8 py-4 text-lg font-medium rounded-xl text-white bg-gradient-to-r from-primary-600 to-accent-500 hover:from-primary-700 hover:to-accent-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            {currentUser ? 'Go to Dashboard' : 'Join Our Community'}
           </button>
         </div>
       </div>

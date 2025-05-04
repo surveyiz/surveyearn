@@ -1,9 +1,29 @@
 import React from 'react';
 import { ArrowRight, CheckCircle, Star } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Button from './Button';
 import HeroIllustration from '../assets/hero-illustration';
+import { getCurrentUser } from '../utils/auth';
 
 const HeroSection: React.FC = () => {
+  const navigate = useNavigate();
+  const currentUser = getCurrentUser();
+
+  const handlePrimaryAction = () => {
+    if (currentUser) {
+      navigate('/app/dashboard');
+    } else {
+      navigate('/signup');
+    }
+  };
+
+  const handleSecondaryAction = () => {
+    const element = document.getElementById('features');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="hero" className="relative min-h-[calc(100vh-4rem)] flex items-center bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 overflow-hidden px-4 py-12 sm:py-16 lg:py-20">
       {/* Decorative Elements */}
@@ -50,14 +70,16 @@ const HeroSection: React.FC = () => {
               <Button 
                 variant="secondary" 
                 size="lg"
+                onClick={handlePrimaryAction}
                 className="group bg-accent-500 hover:bg-accent-600 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto"
               >
-                Start Earning Now
+                {currentUser ? 'Go to Dashboard' : 'Start Earning Now'}
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </Button>
               <Button 
                 variant="outline" 
                 size="lg"
+                onClick={handleSecondaryAction}
                 className="border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto"
               >
                 Learn More

@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
             <div>
               <div className="flex items-center mb-6">
                 <ClipboardList className="h-7 w-7 text-primary-400" />
-                <span className="ml-2 text-xl font-bold">SurveyPlus</span>
+                <span className="ml-2 text-xl font-bold">BunnySurveys</span>
               </div>
               <p className="text-gray-400 mb-6">
                 Earn money by participating in interesting surveys from our partners. Fast payments, user-friendly platform.
@@ -97,7 +97,7 @@ const Footer: React.FC = () => {
       <div className="py-4 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-gray-400 text-sm">
-            © {new Date().getFullYear()} SurveyPlus. All rights reserved.
+            © {new Date().getFullYear()} BunnySurveys. All rights reserved.
           </p>
         </div>
       </div>

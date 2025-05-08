@@ -37,7 +37,7 @@ const Features: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-gray-900">Features</h2>
           <p className="mt-4 text-lg text-gray-600">
-            What makes SurveyPlus stand out
+            What makes BunnySurveys stand out
           </p>
         </div>
 

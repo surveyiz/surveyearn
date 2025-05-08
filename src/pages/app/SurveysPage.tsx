@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ClipboardList, DollarSign, AlertCircle, Loader, Crown, Lock, X, Info } from 'lucide-react';
+import { ClipboardList, DollarSign, AlertCircle, Loader, Crown, Lock, X } from 'lucide-react';
 
 interface SurveyQuestion {
   surveyQuestion: string;
@@ -38,6 +38,7 @@ const SurveysPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
+  const [showLimitModal, setShowLimitModal] = useState(false);
   const [selectedSurvey, setSelectedSurvey] = useState<Survey | null>(null);
   const [dailySurveysRemaining, setDailySurveysRemaining] = useState<number>(0);
 
@@ -108,7 +109,8 @@ const SurveysPage: React.FC = () => {
 
     // Check daily survey limit
     if (dailySurveysRemaining <= 0) {
-      setError('You have reached your daily survey limit. Please try again tomorrow.');
+      setSelectedSurvey(survey);
+      setShowLimitModal(true);
       return;
     }
 
@@ -165,26 +167,6 @@ const SurveysPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Daily Survey Limit Info */}
-      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <Info className="w-5 h-5 text-blue-600 mr-2" />
-            <span className="text-blue-800">
-              Surveys remaining today: {dailySurveysRemaining}
-            </span>
-          </div>
-          {dailySurveysRemaining === 0 && (
-            <button
-              onClick={() => navigate('/app/subscription')}
-              className="text-sm px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-            >
-              Upgrade Plan
-            </button>
-          )}
-        </div>
-      </div>
-
       {surveys.length === 0 ? (
         <div className="text-center py-12 bg-white rounded-xl shadow-sm border border-gray-200">
           <ClipboardList className="w-16 h-16 text-gray-400 mx-auto mb-4" />
@@ -208,7 +190,7 @@ const SurveysPage: React.FC = () => {
             >
               {survey.surveyId === "1" && (
                 <div className="bg-green-100 px-4 py-2 flex items-center">
-                  <Info className="w-4 h-4 text-green-600 mr-2" />
+                  <AlertCircle className="w-4 h-4 text-green-600 mr-2" />
                   <span className="text-sm text-green-700">System Survey - Always Available</span>
                 </div>
               )}
@@ -271,15 +253,12 @@ const SurveysPage: React.FC = () => {
                   </div>
                   <button 
                     onClick={() => handleTakeSurvey(survey)}
-                    disabled={dailySurveysRemaining <= 0 && survey.surveyId !== "1"}
                     className={`px-4 py-2 text-sm rounded-lg transition-colors ${
-                      dailySurveysRemaining <= 0 && survey.surveyId !== "1"
-                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                        : survey.surveyId === "1"
-                          ? 'bg-green-600 text-white hover:bg-green-700'
-                          : survey.surveyPaid 
-                            ? 'bg-primary-600 text-white hover:bg-primary-700'
-                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      survey.surveyId === "1"
+                        ? 'bg-green-600 text-white hover:bg-green-700'
+                        : survey.surveyPaid 
+                          ? 'bg-primary-600 text-white hover:bg-primary-700'
+                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
                   >
                     Take Survey
@@ -342,6 +321,48 @@ const SurveysPage: React.FC = () => {
                 className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700"
               >
                 View Subscription Plans
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Daily Limit Modal */}
+      {showLimitModal && selectedSurvey && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-lg font-semibold text-gray-900">Daily Limit Reached</h3>
+              <button onClick={() => setShowLimitModal(false)}>
+                <X className="w-5 h-5 text-gray-500 hover:text-gray-700" />
+              </button>
+            </div>
+
+            <div className="text-center mb-8">
+              <AlertCircle className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
+              <h4 className="text-xl font-semibold text-gray-900 mb-2">
+                You've Reached Your Daily Survey Limit
+              </h4>
+              <p className="text-gray-600">
+                Upgrade your plan to take more surveys per day and increase your earning potential.
+              </p>
+            </div>
+
+            <div className="flex justify-end space-x-3">
+              <button
+                onClick={() => setShowLimitModal(false)}
+                className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  setShowLimitModal(false);
+                  navigate('/app/subscription');
+                }}
+                className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700"
+              >
+                Upgrade Plan
               </button>
             </div>
           </div>

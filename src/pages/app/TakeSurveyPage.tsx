@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Clock, AlertCircle, CheckCircle, ChevronRight } from 'lucide-react';
 import axios from 'axios';
+import { Clock, AlertCircle, CheckCircle, ChevronRight } from 'lucide-react';
 
 interface SurveyQuestion {
   surveyQuestion: string;
@@ -24,7 +24,7 @@ const TakeSurveyPage: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<'instructions' | 'survey' | 'completion'>('instructions');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string | string[]>>({});
-  const [timer, setTimer] = useState(7);
+  const [timer, setTimer] = useState(4);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -60,7 +60,7 @@ const TakeSurveyPage: React.FC = () => {
 
   useEffect(() => {
     if (currentStep === 'survey') {
-      setTimer(7);
+      setTimer(4);
     }
   }, [currentQuestionIndex, currentStep]);
 
@@ -157,7 +157,7 @@ const TakeSurveyPage: React.FC = () => {
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5" />
-                    <span>You must wait 7 seconds before proceeding to the next question</span>
+                    <span>You must wait 4 seconds before proceeding to the next question</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5" />

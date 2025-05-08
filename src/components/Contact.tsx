@@ -31,7 +31,6 @@ const Contact: React.FC = () => {
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 relative overflow-hidden" id="contact">
-      {/* Background decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2" />
@@ -46,7 +45,6 @@ const Contact: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-10">
-          {/* Contact Info Card */}
           <div className="lg:col-span-2">
             <div className="bg-gradient-to-br from-primary-600 to-accent-500 rounded-2xl p-6 sm:p-8 text-white h-full transform hover:scale-[1.02] transition-transform duration-300">
               <div className="space-y-6 sm:space-y-8">
@@ -64,7 +62,7 @@ const Contact: React.FC = () => {
                     </div>
                     <div className="ml-4">
                       <p className="text-sm text-white/70">Email</p>
-                      <p className="font-medium text-sm sm:text-base">support@surveyplus.example.com</p>
+                      <p className="font-medium text-sm sm:text-base">support@bunnysurveys.com</p>
                     </div>
                   </div>
                   
@@ -99,7 +97,6 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
           <div className="lg:col-span-3">
             <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
               <form onSubmit={handleSubmit} className="space-y-6">

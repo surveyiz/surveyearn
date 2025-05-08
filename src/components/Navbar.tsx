@@ -30,6 +30,10 @@ const Navbar: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleDashboardClick = () => {
+    navigate('/app/dashboard');
+  };
+
   const scrollToSection = (sectionId: string) => {
     setIsOpen(false);
     if (location.pathname !== '/') {
@@ -41,10 +45,6 @@ const Navbar: React.FC = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  };
-
-  const handleDashboardClick = () => {
-    navigate('/app/dashboard');
   };
 
   const navLinks = [
@@ -65,7 +65,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <ClipboardList className="h-8 w-8 text-primary-500" />
-              <span className="ml-2 text-xl font-bold text-white">SurveyPlus</span>
+              <span className="ml-2 text-xl font-bold text-white">BunnySurveys</span>
             </Link>
           </div>
           

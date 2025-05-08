@@ -1,5 +1,3 @@
-import { Feature, Step, Testimonial, FAQ } from '../types';
-
 export const steps: Step[] = [
   {
     id: 1,
@@ -53,7 +51,7 @@ export const testimonials: Testimonial[] = [
     id: 1,
     name: 'Sarah Johnson',
     role: 'Student',
-    feedback: 'SurveyPlus has become my go-to platform for earning extra money during my studies. The surveys are engaging and the payments are always on time!',
+    feedback: 'BunnySurveys has become my go-to platform for earning extra money during my studies. The surveys are engaging and the payments are always on time!',
     rating: 5,
     avatar: ''
   },
@@ -61,7 +59,7 @@ export const testimonials: Testimonial[] = [
     id: 2,
     name: 'Michael Chen',
     role: 'Freelancer',
-    feedback: 'As a freelancer, I appreciate the flexibility SurveyPlus offers. The platform is user-friendly and the survey variety keeps things interesting.',
+    feedback: 'As a freelancer, I appreciate the flexibility BunnySurveys offers. The platform is user-friendly and the survey variety keeps things interesting.',
     rating: 5,
     avatar: ''
   },
@@ -77,7 +75,7 @@ export const testimonials: Testimonial[] = [
     id: 4,
     name: 'David Kimani',
     role: 'Teacher',
-    feedback: 'The extra income from SurveyPlus has been a great help. I complete surveys during my free periods at school and the earnings add up quickly.',
+    feedback: 'The extra income from BunnySurveys has been a great help. I complete surveys during my free periods at school and the earnings add up quickly.',
     rating: 4,
     avatar: ''
   },
@@ -85,7 +83,7 @@ export const testimonials: Testimonial[] = [
     id: 5,
     name: 'Grace Wanjiku',
     role: 'Stay-at-home Mom',
-    feedback: 'SurveyPlus fits perfectly into my schedule. I can take surveys while my baby naps, and the earnings help with household expenses.',
+    feedback: 'BunnySurveys fits perfectly into my schedule. I can take surveys while my baby naps, and the earnings help with household expenses.',
     rating: 5,
     avatar: ''
   },
@@ -109,7 +107,7 @@ export const testimonials: Testimonial[] = [
     id: 8,
     name: 'Tom Mboya',
     role: 'Recent Graduate',
-    feedback: 'Started using SurveyPlus during job hunting. It provided a steady stream of income and helped me stay financially stable.',
+    feedback: 'Started using BunnySurveys during job hunting. It provided a steady stream of income and helped me stay financially stable.',
     rating: 5,
     avatar: ''
   },
@@ -133,7 +131,7 @@ export const testimonials: Testimonial[] = [
     id: 11,
     name: 'Mary Akinyi',
     role: 'Healthcare Worker',
-    feedback: 'I appreciate how SurveyPlus respects our time. Surveys are well-targeted, and disqualifications are minimal.',
+    feedback: 'I appreciate how BunnySurveys respects our time. Surveys are well-targeted, and disqualifications are minimal.',
     rating: 4,
     avatar: ''
   },
@@ -157,7 +155,7 @@ export const testimonials: Testimonial[] = [
     id: 14,
     name: 'Charles Otieno',
     role: 'Gig Worker',
-    feedback: 'SurveyPlus complements my other gig work perfectly. The earning potential is good, especially during peak survey seasons.',
+    feedback: 'BunnySurveys complements my other gig work perfectly. The earning potential is good, especially during peak survey seasons.',
     rating: 4,
     avatar: ''
   },
@@ -197,7 +195,7 @@ export const testimonials: Testimonial[] = [
     id: 19,
     name: 'Catherine Njoroge',
     role: 'Bank Teller',
-    feedback: 'I recommend SurveyPlus to anyone looking for legitimate online earning opportunities. It\'s reliable and trustworthy.',
+    feedback: 'I recommend BunnySurveys to anyone looking for legitimate online earning opportunities. It\'s reliable and trustworthy.',
     rating: 5,
     avatar: ''
   },

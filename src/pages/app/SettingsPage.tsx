@@ -7,8 +7,10 @@ import {
   CheckCircle, 
   Eye,
   EyeOff,
-  X
+  X,
+  DollarSign
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { getCurrentUser } from '../../utils/auth';
 
 interface PaymentMethod {
@@ -17,6 +19,7 @@ interface PaymentMethod {
 }
 
 const SettingsPage: React.FC = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(getCurrentUser());
   const [showChangePassword, setShowChangePassword] = useState(false);
   const [showAddPayment, setShowAddPayment] = useState(false);
@@ -25,6 +28,7 @@ const SettingsPage: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [lastPasswordChange, setLastPasswordChange] = useState<string | null>(null);
+  const [totalEarnings, setTotalEarnings] = useState(0);
 
   const [passwordForm, setPasswordForm] = useState({
     currentPassword: '',
@@ -47,6 +51,11 @@ const SettingsPage: React.FC = () => {
 
     const lastChange = localStorage.getItem('lastPasswordChange');
     setLastPasswordChange(lastChange);
+
+    // Calculate total earnings
+    const earnings = JSON.parse(localStorage.getItem('earnings') || '[]');
+    const total = earnings.reduce((sum: number, earning: { amount: number }) => sum + earning.amount, 0);
+    setTotalEarnings(total);
   }, []);
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -209,6 +218,29 @@ const SettingsPage: React.FC = () => {
               <p className="text-gray-500">No payment methods added yet</p>
             </div>
           )}
+        </div>
+      </div>
+
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+        <div className="p-6 border-b border-gray-200">
+          <div className="flex justify-between items-center">
+            <h2 className="text-lg font-semibold text-gray-900">Withdrawal</h2>
+            <button
+              onClick={() => navigate('/app/withdrawal')}
+              className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors flex items-center"
+            >
+              <DollarSign className="w-5 h-5 mr-2" />
+              Withdraw Funds
+            </button>
+          </div>
+        </div>
+        <div className="p-6">
+          <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+            <div>
+              <p className="text-sm text-gray-600">Available Balance</p>
+              <p className="text-2xl font-bold text-gray-900">Ksh {totalEarnings}</p>
+            </div>
+          </div>
         </div>
       </div>
 

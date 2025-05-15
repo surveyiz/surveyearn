@@ -13,6 +13,7 @@ import SignupPage from './pages/auth/SignupPage';
 import NotFoundPage from './pages/NotFoundPage';
 import SubscriptionPage from './pages/app/SubscriptionPage';
 import PaymentPage from './pages/app/PaymentPage';
+import WithdrawalPage from './pages/app/WithdrawalPage';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="help" element={<HelpPage />} />
           <Route path="subscription" element={<SubscriptionPage />} />
           <Route path="payment" element={<PaymentPage />} />
+          <Route path="withdrawal" element={<WithdrawalPage />} />
         </Route>
         
         {/* 404 route */}

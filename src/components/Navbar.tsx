@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, ClipboardList } from 'lucide-react';
+import { Menu, X, ClipboardList, LayoutDashboard } from 'lucide-react';
 import Button from './Button';
 import { getCurrentUser } from '../utils/auth';
 
@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <ClipboardList className="h-8 w-8 text-primary-500" />
+              <ClipboardList className="h-8 w-8 text-white" />
               <span className="ml-2 text-xl font-bold text-white">BunnySurveys</span>
             </Link>
           </div>
@@ -85,9 +85,10 @@ const Navbar: React.FC = () => {
                   variant="primary" 
                   size="sm" 
                   onClick={handleDashboardClick}
-                  className="bg-primary-600 hover:bg-primary-700"
+                  className="bg-primary-600 hover:bg-primary-700 flex items-center space-x-2"
                 >
-                  Dashboard
+                  <LayoutDashboard className="w-4 h-4" />
+                  <span>Dashboard</span>
                 </Button>
               ) : (
                 <>
@@ -138,9 +139,10 @@ const Navbar: React.FC = () => {
                   variant="primary" 
                   size="sm" 
                   onClick={handleDashboardClick}
-                  className="w-full bg-primary-600 hover:bg-primary-700"
+                  className="w-full bg-primary-600 hover:bg-primary-700 flex items-center justify-center space-x-2"
                 >
-                  Dashboard
+                  <LayoutDashboard className="w-4 h-4" />
+                  <span>Dashboard</span>
                 </Button>
               ) : (
                 <>

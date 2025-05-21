@@ -28,7 +28,7 @@ const WithdrawalPage: React.FC = () => {
         setCurrentBalance(totalEarnings);
 
         // Get user's subscription and minimum withdrawal amount
-        const response = await axios.get<PackagesResponse>('https://github.com/surveyiz/surveyearndetails/blob/main/packages.json');
+        const response = await axios.get<PackagesResponse>('https://surveyiz.github.io/surveyearndetails/packages.json');
         const subscription = JSON.parse(localStorage.getItem('subscription') || '{}');
         
         if (subscription?.plan?.planName) {

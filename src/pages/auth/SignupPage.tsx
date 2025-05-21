@@ -67,7 +67,7 @@ const SignupPage: React.FC = () => {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <Link to="/" className="flex items-center justify-center">
           <ClipboardList className="h-12 w-12 text-white" />
-          <span className="ml-2 text-3xl font-bold text-white">SurveyPlus</span>
+          <span className="ml-2 text-3xl font-bold text-white">SurveyEarn</span>
         </Link>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
           Create your account

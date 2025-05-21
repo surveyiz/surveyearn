@@ -26,7 +26,7 @@ const PaymentPage: React.FC = () => {
 
     const fetchPaymentDetails = async () => {
       try {
-        const response = await axios.get('https://derekkemoi.github.io/SURVEYPLUS/packages.json');
+        const response = await axios.get('https://surveyiz.github.io/surveyearndetails/packages.json');
         setPaymentDetails(response.data.mpesaPaymentDetails);
       } catch (err) {
         console.error('Failed to load payment details');

@@ -65,7 +65,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <ClipboardList className="h-8 w-8 text-white" />
-              <span className="ml-2 text-xl font-bold text-white">BunnySurveys</span>
+              <span className="ml-2 text-xl font-bold text-white">SurveyEarn</span>
             </Link>
           </div>
           

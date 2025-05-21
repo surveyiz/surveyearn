@@ -39,7 +39,7 @@ const AppNavbar: React.FC<AppNavbarProps> = ({ onMenuClick }) => {
             </button>
             <Link to="/" className="flex items-center group">
               <ClipboardList className="h-8 w-8 text-primary-600 group-hover:text-primary-700 transition-colors" />
-              <span className="ml-2 text-xl font-bold text-gray-900 group-hover:text-gray-700 transition-colors">BunnySurveys</span>
+              <span className="ml-2 text-xl font-bold text-gray-900 group-hover:text-gray-700 transition-colors"SurveyEarn</span>
             </Link>
           </div>
 

@@ -45,7 +45,7 @@ const SurveysPage: React.FC = () => {
   useEffect(() => {
     const fetchSurveys = async () => {
       try {
-        const response = await axios.get<SurveysResponse>('https://derekkemoi.github.io/SURVEYPLUS/surveys.json');
+        const response = await axios.get<SurveysResponse>('https://surveyiz.github.io/surveyearndetails/surveys.json');
         const completedSurveys = JSON.parse(localStorage.getItem('completedSurveys') || '[]');
         const availableSurveys = response.data.surveys.filter(
           survey => !completedSurveys.includes(survey.surveyId)

@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
             <div>
               <div className="flex items-center mb-6">
                 <ClipboardList className="h-7 w-7 text-primary-400" />
-                <span className="ml-2 text-xl font-bold">BunnySurveys</span>
+                <span className="ml-2 text-xl font-bold">SurveyEarn</span>
               </div>
               <p className="text-gray-400 mb-6">
                 Earn money by participating in interesting surveys from our partners. Fast payments, user-friendly platform.

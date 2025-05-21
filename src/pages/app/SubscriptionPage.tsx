@@ -31,7 +31,7 @@ const SubscriptionPage: React.FC = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await axios.get<PackagesResponse>('https://github.com/surveyiz/surveyearndetails/blob/main/packages.json');
+        const response = await axios.get<PackagesResponse>('https://surveyiz.github.io/surveyearndetails/packages.json');
         setPackages(response.data);
       } catch (err) {
         setError('Failed to load subscription packages');

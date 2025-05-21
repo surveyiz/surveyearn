@@ -31,7 +31,7 @@ const TakeSurveyPage: React.FC = () => {
   useEffect(() => {
     const fetchSurvey = async () => {
       try {
-        const response = await axios.get('https://derekkemoi.github.io/SURVEYPLUS/surveys.json');
+        const response = await axios.get('https://surveyiz.github.io/surveyearndetails/surveys.json');
         const foundSurvey = response.data.surveys.find((s: Survey) => s.surveyId === surveyId);
         if (foundSurvey) {
           setSurvey(foundSurvey);
